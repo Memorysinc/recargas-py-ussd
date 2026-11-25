@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Recargas PY</string>
+    <string name="accessibility_service_label">Asistente USSD Recargas PY</string>
+    <string name="accessibility_service_description">Lee los menús USSD de Tigo y Claro para navegar automáticamente, ingresar el PIN cifrado si lo habilitas y detenerse siempre antes de confirmar cualquier operación económica.</string>
+</resources>

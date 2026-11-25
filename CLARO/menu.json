@@ -1,0 +1,271 @@
+{
+  "operador": "Claro Paraguay",
+  "codigos_iniciales": [
+    {
+      "codigo": "*321#",
+      "estado": "verificada",
+      "nota": "Indicado por el usuario; menú Prepago CLARO mostrado.",
+      "captura": "capturas/12_menu_321.png"
+    },
+    {
+      "codigo": "*111#",
+      "estado": "verificada",
+      "nota": "Menú Mi Claro mostrado en el teléfono.",
+      "captura": "capturas/03_claro_inicio.png"
+    }
+  ],
+  "autenticacion": {
+    "requerida": true,
+    "estado": "verificada",
+    "uso": "Consultas protegidas del menú Claro (PIN omitido; gestionado cifrado con Android Keystore en la app)"
+  },
+  "menu_321": {
+    "pagina_1": {
+      "estado": "verificada",
+      "opciones": [
+        {
+          "numero": 1,
+          "nombre": "Recarga de saldo",
+          "estado": "verificada",
+          "rama": "verificada",
+          "requiere_pin": true,
+          "flujo": [
+            "Ingrese Numero de telefono a recargar",
+            "Ingrese el monto a recargar:",
+            "Ingrese su PIN:",
+            "Confirma Venta de Recarga de $1000 para el numero 991000000? 1 Aceptar / 2 Cancelar"
+          ],
+          "nota": "Probado con destino 991000000, monto 1000 y PIN; detenido en la pantalla de confirmación final sin confirmar.",
+          "capturas": [
+            "capturas/41_recarga_saldo.png",
+            "capturas/43_recarga_saldo_paso2.png",
+            "capturas/46_recarga_saldo_paso3.png",
+            "capturas/49_recarga_saldo_confirmacion.png"
+          ]
+        },
+        {
+          "numero": 2,
+          "nombre": "Venta de packs",
+          "estado": "verificada",
+          "rama": "verificada",
+          "requiere_pin": true,
+          "destino_probado": "991000000",
+          "respuesta": "La linea no cumple con las condiciones comerciales vigentes. Prestamo Pendiente de Pago o Suspendida/Cancelada. Para mas info el cliente debe llamar *111",
+          "capturas": [
+            "capturas/29_venta_packs.png",
+            "capturas/30_packs_destino.png",
+            "capturas/31_venta_packs_cancelada.png",
+            "capturas/38_packs_ilimitados.png"
+          ]
+        },
+        {
+          "numero": 3,
+          "nombre": "Últimos incentivos",
+          "estado": "verificada",
+          "respuesta": "No se registran premios o incentivos en los últimos 90 días.",
+          "captura": "capturas/16_ultimos_incentivos.png"
+        },
+        {
+          "numero": 4,
+          "nombre": "Última recarga",
+          "estado": "verificada",
+          "respuesta": "Detalle <ID_TX>; Gs. 20.000; número 99XXXXXXX.",
+          "captura": "capturas/17_ultima_recarga.png"
+        },
+        {
+          "numero": 5,
+          "nombre": "Consulta de Recarga",
+          "estado": "verificada",
+          "rama": "verificada",
+          "requiere_pin": true,
+          "subopciones": [
+            {
+              "numero": 1,
+              "nombre": "Consultar por id de transaccion",
+              "estado": "verificada"
+            },
+            {
+              "numero": 2,
+              "nombre": "Consultar por numero de suscriptor",
+              "estado": "verificada",
+              "numero_consultado": "991000000",
+              "respuesta": "No se encontro Transaccion para el suscriptor."
+            },
+            {
+              "numero": 3,
+              "nombre": "Salir",
+              "estado": "verificada"
+            }
+          ],
+          "capturas": [
+            "capturas/33_consulta_recarga.png",
+            "capturas/34_consulta_recarga_respuesta.png"
+          ]
+        },
+        {
+          "numero": 6,
+          "nombre": "Próxima página",
+          "estado": "verificada",
+          "destino": "pagina_2"
+        }
+      ]
+    },
+    "pagina_2": {
+      "estado": "verificada",
+      "captura": "capturas/13_pagina2.png",
+      "opciones": [
+        {
+          "numero": 1,
+          "nombre": "Anterior",
+          "estado": "verificada"
+        },
+        {
+          "numero": 2,
+          "nombre": "Informe de ventas",
+          "estado": "verificada",
+          "rama": "verificada",
+          "requiere_pin": true,
+          "respuesta": "Las ventas totales hechas para 99XXXXXXX entre 24-11-2026 y 24-11-2026 son Gs. 0.0 con cantidad de transacciones 0 y su saldo disponible es Gs. 30400.0.",
+          "captura": "capturas/32_informe_ventas.png"
+        },
+        {
+          "numero": 3,
+          "nombre": "Consultar mi saldo disponible",
+          "estado": "verificada",
+          "respuesta": "Su saldo disponible es 30400.",
+          "requiere_pin": true,
+          "captura": "capturas/14_consulta_saldo.png"
+        },
+        {
+          "numero": 4,
+          "nombre": "Cierre de turno",
+          "estado": "verificada",
+          "rama": "verificada",
+          "requiere_pin": true,
+          "nota": "Solicita 'Ingrese su PIN:'; cancelado sin ejecutar cierre.",
+          "captura": "capturas/48_cierre_turno.png"
+        },
+        {
+          "numero": 5,
+          "nombre": "Cambiar PIN",
+          "estado": "verificada",
+          "rama": "verificada",
+          "nota": "Solicita 'Ingrese su PIN existente.'; cancelado sin modificar.",
+          "captura": "capturas/44_cambiar_pin.png"
+        },
+        {
+          "numero": 6,
+          "nombre": "Consulta de montos",
+          "estado": "verificada",
+          "rama": "pendiente",
+          "rango": "Gs. 1.000 a Gs. 124.000 en incrementos de Gs. 1.000; paginación detenida por indicación del usuario",
+          "capturas": [
+            "capturas/18_consulta_montos.png",
+            "capturas/19_consulta_montos2.png",
+            "capturas/20_consulta_montos3.png",
+            "capturas/21_consulta_montos4.png",
+            "capturas/22_consulta_montos5.png",
+            "capturas/23_consulta_montos6.png"
+          ]
+        },
+        {
+          "numero": 7,
+          "nombre": "Recarga de roaming",
+          "estado": "verificada",
+          "rama": "verificada",
+          "paises": [
+            {"numero": 1, "nombre": "Argentina", "siguiente": "Ingrese Numero a recargar:"},
+            {"numero": 2, "nombre": "Uruguay"}
+          ],
+          "nota": "Se probó opción 1 (Argentina); al ingresar el número local 991000000 devolvió 'Ingreso invalido. Por favor vuelva a intentarlo.'",
+          "capturas": [
+            "capturas/42_recarga_roaming.png",
+            "capturas/47_recarga_roaming_argentina.png",
+            "capturas/50_recarga_roaming_paso2.png"
+          ]
+        }
+      ]
+    }
+  },
+  "menu_111": {
+    "estado": "verificada",
+    "opciones": [
+      {
+        "numero": 1,
+        "nombre": "Saldos y Consumos",
+        "estado": "verificada",
+        "subopciones": [
+          {
+            "numero": 1,
+            "nombre": "Mi Consumo",
+            "estado": "verificada",
+            "secuencia": [
+              {
+                "mensaje": "Gs. 3.000 de saldo de recarga; última recarga 20/11/26.",
+                "captura": "capturas/05_mi_consumo.png"
+              },
+              {
+                "mensaje": "395 MB de Megas de regalo; vencen 30/11/26 15:35.",
+                "captura": "capturas/06_consumo_detalle.png"
+              },
+              {
+                "mensaje": "Internet por día: Gs. 2.000 por 150 MB al día, luego Gs. 29/MB.",
+                "captura": "capturas/07_consumo_detalle2.png"
+              },
+              {
+                "mensaje": "Beneficio de WhatsApp Gratis; consultar disponibilidad en Mi Claro.",
+                "captura": "capturas/08_consumo_detalle3.png"
+              },
+              {
+                "estado": "pendiente",
+                "nota": "Siguiente pantalla no guardada por indicación del usuario."
+              }
+            ]
+          },
+          {
+            "numero": 2,
+            "nombre": "Volver al Menú Principal",
+            "estado": "verificada"
+          }
+        ]
+      },
+      {
+        "numero": 2,
+        "nombre": "Comprar Packs",
+        "estado": "verificada",
+        "rama": "pendiente",
+        "nota": "No abierta por indicación del usuario."
+      },
+      {
+        "numero": 3,
+        "nombre": "Préstamo Claro",
+        "estado": "verificada",
+        "rama": "error_mmi",
+        "respuesta": "Se ha producido un problema de conexión o el código MMI no es válido.",
+        "captura": "capturas/35_prestamo_claro.png"
+      },
+      {
+        "numero": 4,
+        "nombre": "Salir",
+        "estado": "verificada"
+      }
+    ]
+  },
+  "operaciones": {
+    "recargas": {
+      "estado": "pendiente",
+      "nota": "No iniciadas"
+    },
+    "packs": {
+      "estado": "pendiente",
+      "nota": "Flujo Venta de packs cancelado en solicitud de PIN; ningún pack activado."
+    }
+  },
+  "codigos_directos": [
+    {
+      "codigo": "*888*<PIN>*1#",
+      "estado": "no disponible",
+      "nota": "No probado por riesgo de inicio de recarga."
+    }
+  ]
+}

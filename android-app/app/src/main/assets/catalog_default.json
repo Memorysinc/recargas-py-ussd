@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "1.0.0",
+  "updatedAt": "2026-11-24T17:45:00-03:00",
+  "sourceLabel": "Relevamiento USSD ADB (Redmi Note 9S)",
+  "verificationLevel": "VERIFIED_USSD",
+  "integritySha256": null,
+  "operators": [
+    {
+      "id": "tigo",
+      "name": "Tigo Paraguay",
+      "shortName": "Tigo",
+      "brandColorHex": "#00377B",
+      "ussdCode": "*888#",
+      "simMatch": {
+        "mcc": "744",
+        "mnc": "04",
+        "carrierKeywords": ["TIGO", "TELECEL"]
+      },
+      "authMode": "SESSION_START",
+      "phoneFormat": {
+        "requireLeadingZero": true,
+        "minDigits": 10,
+        "maxDigits": 10,
+        "example": "0981000000",
+        "hint": "Número Tigo de 10 dígitos con 0 inicial (ej. 0981000000)"
+      },
+      "directCodes": [
+        {
+          "code": "*888*<PIN>*1#",
+          "operationType": "RECHARGE",
+          "status": "UNAVAILABLE_UNVERIFIED",
+          "note": "No probado por riesgo de inicio de recarga; deshabilitado."
+        }
+      ],
+      "ussdRules": {
+        "pinPromptKeywords": ["Bienvenido a Mini Carga", "Ingrese el PIN"],
+        "pinExcludeKeywords": ["nuevo PIN", "PIN existente"],
+        "destinationPromptKeywords": ["numero del destinatario", "número del destinatario"],
+        "confirmKeywords": ["Confirma la venta", "Transfiere Gs", "1.SI", "2.NO", "1 Sí", "2 No"],
+        "confirmOption": "1",
+        "cancelOption": "2",
+        "cancelResultKeywords": ["Transaccion cancelada", "Transacción cancelada"],
+        "errorKeywords": ["problema de conexión", "problema de conexion", "código MMI no es válido", "codigo MMI"]
+      },
+      "categories": [
+        {
+          "id": "RECHARGE",
+          "title": "Recarga de saldo",
+          "ussdOption": "1",
+          "status": "VERIFIED_USSD",
+          "requiresDestination": true,
+          "amountInputMode": "MENU_OPTION",
+          "amounts": [
+            { "amountGs": 5000, "ussdOption": "1", "status": "VERIFIED_USSD" },
+            { "amountGs": 7000, "ussdOption": "11", "status": "VERIFIED_USSD" },
+            { "amountGs": 8000, "ussdOption": "9", "status": "VERIFIED_USSD" },
+            { "amountGs": 10000, "ussdOption": "2", "status": "VERIFIED_USSD" },
+            { "amountGs": 15000, "ussdOption": "3", "status": "VERIFIED_USSD" },
+            { "amountGs": 20000, "ussdOption": "10", "status": "VERIFIED_USSD" },
+            { "amountGs": 30000, "ussdOption": "4", "status": "VERIFIED_USSD" },
+            { "amountGs": 35000, "ussdOption": "5", "status": "VERIFIED_USSD" },
+            { "amountGs": 40000, "ussdOption": "6", "status": "VERIFIED_USSD" },
+            { "amountGs": 50000, "ussdOption": "7", "status": "VERIFIED_USSD" },
+            { "amountGs": 100000, "ussdOption": "8", "status": "VERIFIED_USSD" }
+          ]
+        },
+        {
+          "id": "COMBOS",
+          "title": "Combos",
+          "ussdOption": "3",
+          "status": "VERIFIED_USSD",
+          "requiresDestination": true,
+          "packages": [
+            { "id": "tigo_combo_1", "ussdOption": "1", "name": "1G+Mi", "priceGs": 8000, "validity": "1 día", "status": "VERIFIED_USSD" },
+            { "id": "tigo_combo_2", "ussdOption": "2", "name": "2GB+Min", "priceGs": 12000, "validity": "2 días", "status": "VERIFIED_USSD" },
+            { "id": "tigo_combo_3", "ussdOption": "3", "name": "2,5GB+Min", "priceGs": 16000, "validity": "3 días", "status": "VERIFIED_USSD" },
+            { "id": "tigo_combo_4", "ussdOption": "4", "name": "3GB+Min", "priceGs": 20000, "validity": "4 días", "status": "VERIFIED_USSD" },
+            { "id": "tigo_combo_5", "ussdOption": "5", "name": "4GB+Min", "priceGs": 27000, "validity": "6 días", "status": "VERIFIED_USSD" },
+            { "id": "tigo_combo_6", "ussdOption": "6", "name": "6GB+Min", "priceGs": 33000, "validity": "8 días", "status": "VERIFIED_USSD" },
+            { "id": "tigo_combo_7", "ussdOption": "7", "name": "10GB+Min", "priceGs": 63000, "validity": "30 días", "status": "VERIFIED_USSD" }
+          ]
+        },
+        {
+          "id": "INTERNET",
+          "title": "Internet (Ilimitados)",
+          "ussdOption": "4",
+          "status": "VERIFIED_USSD",
+          "requiresDestination": true,
+          "packages": [
+            { "id": "tigo_ilim_1", "ussdOption": "1", "name": "Internet+Minx10000x1D", "priceGs": 10000, "validity": "1 día", "status": "VERIFIED_USSD" },
+            { "id": "tigo_ilim_2", "ussdOption": "2", "name": "Internet+Minx15000x2D", "priceGs": 15000, "validity": "2 días", "status": "VERIFIED_USSD" },
+            { "id": "tigo_ilim_3", "ussdOption": "3", "name": "Internet+Minx20000x3D", "priceGs": 20000, "validity": "3 días", "status": "VERIFIED_USSD" },
+            { "id": "tigo_ilim_4", "ussdOption": "4", "name": "Internet+Minx25000x4D", "priceGs": 25000, "validity": "4 días", "status": "VERIFIED_USSD" },
+            { "id": "tigo_ilim_5", "ussdOption": "5", "name": "Internet+Minx40000x8D", "priceGs": 40000, "validity": "8 días", "status": "VERIFIED_USSD" },
+            { "id": "tigo_ilim_6", "ussdOption": "6", "name": "TSports+Ilix15000x1D", "priceGs": 15000, "validity": "1 día", "status": "VERIFIED_USSD" }
+          ]
+        },
+        {
+          "id": "CALLS_SMS",
+          "title": "Llamadas y SMS",
+          "ussdOption": "2",
+          "status": "VERIFIED_USSD",
+          "requiresDestination": true,
+          "packages": [
+            { "id": "tigo_call_1", "ussdOption": "1", "name": "25MIN+150SMS", "priceGs": 35000, "validity": "24 h", "status": "VERIFIED_USSD" },
+            { "id": "tigo_call_2", "ussdOption": "2", "name": "ILIM a Tigo +150minTD", "priceGs": 8000, "validity": "3 días", "status": "VERIFIED_USSD" }
+          ]
+        },
+        {
+          "id": "ROAMING",
+          "title": "Roaming PRE",
+          "ussdOption": "5",
+          "status": "VERIFIED_USSD",
+          "requiresDestination": true,
+          "packages": [
+            { "id": "tigo_roam_1", "ussdOption": "1", "name": "AMERICAx200MBx10000Gsx1D", "priceGs": 10000, "validity": "1 día", "status": "VERIFIED_USSD" },
+            { "id": "tigo_roam_2", "ussdOption": "2", "name": "AMERICAx1GBx30000Gsx7D", "priceGs": 30000, "validity": "7 días", "status": "VERIFIED_USSD" },
+            { "id": "tigo_roam_3", "ussdOption": "3", "name": "AMERICAx2GBx50000Gsx15D", "priceGs": 50000, "validity": "15 días", "status": "VERIFIED_USSD" },
+            { "id": "tigo_roam_4", "ussdOption": "4", "name": "AMERICAx3GBx60000Gsx30D", "priceGs": 60000, "validity": "30 días", "status": "VERIFIED_USSD" }
+          ]
+        },
+        {
+          "id": "QUERIES",
+          "title": "Consultas",
+          "ussdOption": "",
+          "status": "VERIFIED_USSD",
+          "requiresDestination": false,
+          "queries": [
+            { "id": "tigo_q_saldo", "name": "Consultar saldo", "steps": ["6"], "requiresPin": false, "requiresDestination": false, "status": "VERIFIED_USSD", "note": "Muestra saldo disponible de Mini Carga." },
+            { "id": "tigo_q_hist", "name": "Historial del operador", "steps": ["8"], "requiresPin": false, "requiresDestination": false, "status": "VERIFIED_USSD", "note": "Muestra las últimas 3 transacciones." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "claro",
+      "name": "Claro Paraguay",
+      "shortName": "Claro",
+      "brandColorHex": "#DA291C",
+      "ussdCode": "*321#",
+      "simMatch": {
+        "mcc": "744",
+        "mnc": "02",
+        "carrierKeywords": ["CLARO"]
+      },
+      "authMode": "PER_OPERATION",
+      "phoneFormat": {
+        "requireLeadingZero": false,
+        "minDigits": 9,
+        "maxDigits": 9,
+        "example": "991000000",
+        "hint": "Número Claro de 9 dígitos sin 0 inicial (ej. 991000000)"
+      },
+      "directCodes": [],
+      "ussdRules": {
+        "pinPromptKeywords": ["Ingrese su PIN"],
+        "pinExcludeKeywords": ["PIN existente", "nuevo PIN"],
+        "destinationPromptKeywords": ["Numero de telefono a recargar", "Numero a recargar", "numero a consultar"],
+        "amountPromptKeywords": ["monto a recargar"],
+        "confirmKeywords": ["Confirma Venta de Recarga", "1 Aceptar", "2 Cancelar"],
+        "confirmOption": "1",
+        "cancelOption": "2",
+        "cancelResultKeywords": ["cancelad"],
+        "errorKeywords": ["problema de conexión", "problema de conexion", "código MMI no es válido", "Ingreso invalido", "no cumple con las condiciones"]
+      },
+      "categories": [
+        {
+          "id": "RECHARGE",
+          "title": "Recarga de saldo",
+          "ussdOption": "1",
+          "status": "VERIFIED_USSD",
+          "requiresDestination": true,
+          "amountInputMode": "FREE_STEP",
+          "minAmountGs": 1000,
+          "maxAmountGs": 124000,
+          "stepGs": 1000,
+          "suggestedAmountsGs": [2000, 5000, 10000, 15000, 20000, 30000, 50000, 100000],
+          "note": "Rango verificado en Consulta de montos (Gs. 1.000 a Gs. 124.000, paso Gs. 1.000). Flujo: opción 1 -> destino -> monto -> PIN -> confirmación."
+        },
+        {
+          "id": "PACKS",
+          "title": "Venta de packs",
+          "ussdOption": "2",
+          "status": "PENDING",
+          "requiresDestination": true,
+          "packages": [],
+          "note": "Flujo verificado hasta destino + PIN. Lista de ofertas marcada pendiente porque la línea de prueba devolvió restricción comercial vigente."
+        },
+        {
+          "id": "ROAMING",
+          "title": "Recarga de roaming",
+          "ussdOption": "6,7",
+          "status": "PENDING",
+          "requiresDestination": true,
+          "packages": [
+            { "id": "claro_roam_ar", "ussdOption": "1", "name": "Argentina", "priceGs": null, "validity": "Según destino extranjero", "status": "PENDING", "note": "Solicita número argentino; pasos posteriores pendientes." },
+            { "id": "claro_roam_uy", "ussdOption": "2", "name": "Uruguay", "priceGs": null, "validity": "Según destino extranjero", "status": "PENDING", "note": "País disponible en menú; pasos posteriores pendientes." }
+          ],
+          "note": "Navega por página 2 (opción 6 -> 7) y valida formato del número por país destino."
+        },
+        {
+          "id": "QUERIES",
+          "title": "Consultas",
+          "ussdOption": "",
+          "status": "VERIFIED_USSD",
+          "requiresDestination": false,
+          "queries": [
+            { "id": "claro_q_saldo", "name": "Saldo disponible", "steps": ["6", "3", "{PIN}"], "requiresPin": true, "requiresDestination": false, "status": "VERIFIED_USSD", "note": "Consulta saldo de venta disponible en *321#." },
+            { "id": "claro_q_ultima", "name": "Última recarga", "steps": ["4"], "requiresPin": false, "requiresDestination": false, "status": "VERIFIED_USSD", "note": "Muestra detalle, monto y destino de la última recarga." },
+            { "id": "claro_q_incentivos", "name": "Últimos incentivos", "steps": ["3"], "requiresPin": false, "requiresDestination": false, "status": "VERIFIED_USSD", "note": "Consulta premios o incentivos de los últimos 90 días." },
+            { "id": "claro_q_recarga", "name": "Consulta de recarga por número", "steps": ["5", "{PIN}", "2", "{DEST}"], "requiresPin": true, "requiresDestination": true, "status": "VERIFIED_USSD", "note": "Consulta estado de recarga por número de suscriptor." },
+            { "id": "claro_q_ventas", "name": "Informe de ventas de hoy", "steps": ["6", "2", "{PIN}", "{TODAY}", "{TODAY}"], "requiresPin": true, "requiresDestination": false, "status": "VERIFIED_USSD", "note": "Consulta ventas realizadas en la fecha actual." },
+            { "id": "claro_q_montos", "name": "Consulta de montos", "steps": ["6", "6"], "requiresPin": false, "requiresDestination": false, "status": "VERIFIED_USSD", "note": "Lista importes disponibles desde Gs. 1.000." }
+          ]
+        }
+      ]
+    }
+  ]
+}
