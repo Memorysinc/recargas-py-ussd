@@ -43,7 +43,11 @@ fun RecargasTheme(
         darkColorScheme(
             primary = primary.copy(alpha = 0.9f),
             onPrimary = Color.White,
+            primaryContainer = primary.copy(alpha = 0.28f),
+            onPrimaryContainer = Color.White,
             secondary = Color(0xFF80CBC4),
+            secondaryContainer = primary.copy(alpha = 0.25f),
+            onSecondaryContainer = Color.White,
             background = Color(0xFF101318),
             surface = Color(0xFF171C24),
             surfaceVariant = Color(0xFF222936),
@@ -54,7 +58,11 @@ fun RecargasTheme(
         lightColorScheme(
             primary = primary,
             onPrimary = Color.White,
+            primaryContainer = primary.copy(alpha = 0.14f),
+            onPrimaryContainer = primary,
             secondary = Color(0xFF00796B),
+            secondaryContainer = primary.copy(alpha = 0.14f),
+            onSecondaryContainer = primary,
             background = Color(0xFFF6F8FB),
             surface = Color.White,
             surfaceVariant = Color(0xFFEAEEF5),

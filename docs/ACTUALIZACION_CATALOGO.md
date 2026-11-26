@@ -19,7 +19,8 @@ El catálogo sigue el esquema definido en [catalog_v1.json](../catalog/catalog_v
 
 ## 2. Cómo publicar y actualizar sin reinstalar la APK
 ### Opción A: URL HTTP/HTTPS configurable
-1. Aloja el archivo JSON (por ejemplo, `catalog_v1.json`) en un servidor web, GitHub Raw o red local.
+1. Aloja el archivo JSON (por ejemplo, `catalog_v1.json`) en un servidor web, GitHub Raw o red local. De fábrica, la APK viene preconfigurada con:
+   `https://raw.githubusercontent.com/Memorysinc/recargas-py-ussd/main/catalog/catalog_v1.json`
 2. En la app, ve a **Ajustes → Catálogo y actualizaciones**.
 3. Ingresa la **URL del catálogo JSON externo** y toca **Guardar URL**.
 4. Configura el intervalo automático (`1`, `3`, `7`, `15` o `30` días) o pulsa **Actualizar ahora**.
